@@ -1,0 +1,13 @@
+#!/bin/bash
+
+cd ~/Desktop
+# Download the tarball and only extract Open in Sublime Text.workflow.
+curl -fL https://github.com/caiwilliamson/open-in-sublime-text/tarball/master | tar -xz --strip-components 1 --exclude={README.md,install};
+if [[ -d Open\ in\ Sublime\ Text.workflow ]]; then
+  # Copy it to ~/Library/Services to install.
+  cp -rn Open\ in\ Sublime\ Text.workflow ~/Library/Services;
+  # Remove the download.
+  rm -rf Open\ in\ Sublime\ Text.workflow;
+  echo -e "\n\033[1;32m✔\033[1m Open in Sublime Text installed! \033[0m";
+  echo -e "\nTo uninstall:\n  rm -rf ~/Library/Services/Open\ in\ Sublime\ Text.workflow"
+fi
